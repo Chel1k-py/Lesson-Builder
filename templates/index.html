@@ -1,0 +1,48 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Генератор уроков</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+<h1>Генератор занятий</h1>
+<form method="POST">
+
+    <input type="text" name="theme" placeholder="Тема" required>
+    <select name="audience">
+        <option>начальная школа</option>
+        <option>средние классы</option>
+        <option>старшие классы</option>
+    </select>
+
+    <select name="duration">
+        <option>15 минут</option>
+        <option>30 минут</option>
+        <option>45 минут</option>
+    </select>
+
+    <h3>Инструменты:</h3>
+    <label><input type="checkbox" name="tools" value="телефоны">Телефоны</label>
+    <label><input type="checkbox" name="tools" value="компьютер">Компьютер</label>
+    <label><input type="checkbox" name="tools" value="интерактивная доска">Доска</label>
+
+    <br><br>
+    <button type="submit">Сгенерировать</button>
+
+</form>
+<hr>
+<div class="lessons">
+    {% for s in lessons %}
+        <div class="lesson">
+            <h2>{{ s.title }}</h2>
+            <p><b>Возраст:</b> {{ s.audience }}</p>
+            <p><b>Цель:</b> {{ s.goal }}</p>
+            <p><b>Начало:</b> {{ s.start }}</p>
+            <p><b>Основная часть:</b> {{ s.main }}</p>
+            <p><b>Рефлексия:</b> {{ s.reflection }}</p>
+            <p><b>Вывод:</b> {{ s.conclusion }}</p>
+        </div>
+    {% endfor %}
+</div>
+</body>
+</html>
